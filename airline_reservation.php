@@ -1,3 +1,21 @@
+<html>
+    <head>
+        <title>Airlines</title>
+</head>
+<body>
+    <form method="POST" action="#">
+            <h2 align=center>Enter Flight Details</h2><br/>
+            FROM:<input type="text" name="fro"><br><br>
+            Airline Name<input type="text" name="airline"><br><br>
+            Departure Date<input type="text" name="dd"><br><br>
+            Arrival Date<input type="text" name="ad"><br><br>
+            TO<input type="text" name="TOO"><br><br>
+            Flight Number<input type="text" name="fn"><br><br>
+            Terminal<input type="text" name="ter"><br><br>
+            <input type="submit" name="submit">
+        </form>
+    </body>
+</html>
 <?php
 $servername="localhost";
 $username="root";
@@ -14,7 +32,22 @@ else
 echo"<br><h2 align=center>FLIGHT DETAILS</h2><br/>";
 }
 
-
+$from=$_POST['fro'];
+$airlines=$_POST['airline'];
+$ddate=$_POST['dd'];
+$adate=$_POST['ad'];
+$to1=$_POST['too'];
+$fnum=$_POST['fn'];
+$terminal=$_POST['ter'];
+$query="INSERT INTO air(fro,airline,dd,ad,too,fn,ter) VALUES('".$from."','".$airlines."','".$ddate."','".$adate."','".$to1."','".$fnum."','".$terminal."')";
+$res=mysqli_query($conn,$query);
+if($res)
+{
+    echo"submitted successfully!!";
+}
+else{
+    echo "error";
+}
 $sql="SELECT*FROM air";
 $res=mysqli_query($conn,$sql);
 if(mysqli_num_rows($res)>0)
